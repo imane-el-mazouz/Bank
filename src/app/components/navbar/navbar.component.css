@@ -1,0 +1,54 @@
+.header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.header .topbar {
+  background-color: #f8f9fa;
+  padding: 5px 0;
+  font-size: 14px;
+}
+
+.header .topbar .contact-info i {
+  margin-right: 5px;
+}
+
+.header .topbar .contact-info a,
+.header .topbar .contact-info span {
+  color: #6c757d;
+}
+
+.header .topbar .social-links a {
+  color: #6c757d;
+  margin-left: 10px;
+}
+
+.header .branding {
+  padding: 10px 0;
+}
+
+.header .branding .sitename {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+#hey {
+  background-color: #007bff;
+  padding: 10px 0;
+  text-align: center;
+  color: white;
+}
+
+#hey .contact-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+#hey .contact-info > div {
+  margin: 0 10px;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: blue;
+}
