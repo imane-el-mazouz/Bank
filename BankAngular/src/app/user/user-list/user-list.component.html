@@ -1,1 +1,30 @@
-<p>user-list works!</p>
+<main class="main">
+  <div class="container">
+    <div class="card my-5">
+      <div class="card-body">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+            <td>
+              <a class="btn btn-primary" [routerLink]="['/update-user', user.id]">Update User</a>
+              <button class="btn btn-danger" type="button" (click)="deleteUser(user.id)">Delete</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+<router-outlet></router-outlet>
