@@ -13,6 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/benef")
+@CrossOrigin(origins = "http://localhost:4200")
+
 public class BeneficiaryController {
 
     @Autowired
