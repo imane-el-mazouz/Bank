@@ -1,9 +1,8 @@
-export class User{
-  id! : number;
-  name! : string;
-  profession! : string;
-  email! : string;
-  password! : string;
-  phone! : string;
-
+export class User {
+  idU!: number;
+  email!: string;
+  name!: string;
+  password!: string;
+  profession!: string;
+  phone!: string;
 }

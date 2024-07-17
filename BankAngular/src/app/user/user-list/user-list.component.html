@@ -6,19 +6,25 @@
           <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Password</th>
+            <th scope="col">Profession</th>
+            <th scope="col">Phone</th>
             <th scope="col">Actions</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let user of users">
-            <td>{{ user.id }}</td>
+            <td>{{ user.idU }}</td>
+            <td>{{ user.email }}</td>
             <td>{{ user.name }}</td>
-            <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.profession }}</td>
+            <td>{{ user.phone }}</td>
             <td>
-              <a class="btn btn-primary" [routerLink]="['/update-user', user.id]">Update User</a>
-              <button class="btn btn-danger" type="button" (click)="deleteUser(user.id)">Delete</button>
+              <a class="btn btn-primary" [routerLink]="['/update-user', user.idU]">Update User</a>
+              <button class="btn btn-danger" type="button" (click)="deleteUser(user.idU)">Delete</button>
             </td>
           </tr>
           </tbody>
@@ -27,4 +33,3 @@
     </div>
   </div>
 </main>
-<router-outlet></router-outlet>

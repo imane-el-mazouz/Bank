@@ -22,15 +22,14 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  deleteUser(id: number): void {
-    this.userService.deleteUser(id).subscribe(() => {
-      this.users = this.users.filter(user => user.id !== id);
+  deleteUser(idU: number): void {
+    this.userService.deleteUser(idU).subscribe(() => {
+      this.users = this.users.filter(user => user.idU !== idU);
     });
   }
-
-  updateUser(id: number, user: User): void {
-    this.userService.updateUser(id, user).subscribe(()=> {
-      this.users = this.users.filter(user => user.id !== id);
+  updateUser(idU: number, user: User): void {
+    this.userService.updateUser(idU, user).subscribe(()=> {
+      this.users = this.users.filter(user => user.idU !== idU);
     });
   }
 }
