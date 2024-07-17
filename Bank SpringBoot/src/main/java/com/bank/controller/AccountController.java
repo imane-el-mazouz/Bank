@@ -30,7 +30,7 @@ public class AccountController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
+  @GetMapping("/all")
     public ResponseEntity<List<Account>> getAllAccounts() {
         List<Account> accounts = accountService.getAllAccounts();
         return ResponseEntity.ok(accounts);

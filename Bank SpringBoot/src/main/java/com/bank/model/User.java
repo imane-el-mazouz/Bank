@@ -18,10 +18,11 @@ public class User {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long idU;
   private String name;
-  private String profession;
+
   private String email;
   private String password;
   private String phone;
+  private String profession;
 
   @OneToMany(mappedBy = "user" ,cascade = CascadeType.ALL)
   @JsonIgnore
@@ -30,9 +31,10 @@ public class User {
   public User(Long idU, String name, String profession, String email, String password, String phone) {
     this.idU = idU;
     this.name = name;
-    this.profession = profession;
     this.email = email;
     this.password = password;
     this.phone = phone;
+    this.profession = profession;
+
   }
 }

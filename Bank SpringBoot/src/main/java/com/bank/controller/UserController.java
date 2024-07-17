@@ -33,11 +33,13 @@ public class UserController {
     }
   }
 
+
   @PostMapping
-  public ResponseEntity<UserDto> saveUser(@RequestBody UserDto userDto) {
+  public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
     UserDto savedUser = userService.saveUser(userDto);
     return ResponseEntity.ok(savedUser);
   }
+
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteUser(@PathVariable Long id) {

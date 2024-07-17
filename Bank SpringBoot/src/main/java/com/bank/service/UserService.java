@@ -38,20 +38,28 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public UserDto saveUser(UserDto userDto) {
-        User user = new User();
-        user.setEmail(userDto.getEmail());
-        user.setName(userDto.getName());
-        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        user.setProfession(userDto.getProfession());
+  public UserDto saveUser(UserDto userDto) {
+    User user = new User();
+    user.setEmail(userDto.getEmail());
+    user.setName(userDto.getName());
+    user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+    user.setProfession(userDto.getPhone());
+    user.setProfession(userDto.getProfession());
+    User savedUser = userRepository.save(user);
+    return new UserDto(
+      savedUser.getIdU(),
+      savedUser.getEmail(),
+      savedUser.getName(),
+      savedUser.getPassword(),
+      savedUser.getPhone(),
+      savedUser.getProfession()
 
-        User savedUser = userRepository.save(user);
-
-        return new UserDto(savedUser.getIdU(), savedUser.getEmail(), savedUser.getName(), savedUser.getPassword(), savedUser.getProfession() , savedUser.getPhone());
-    }
+      );
+  }
 
 
-    public UserDto updateUser(UserDto userDto, Long id) {
+
+  public UserDto updateUser(UserDto userDto, Long id) {
         User userUpdated = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("user not found !"));
         userUpdated.setName(userDto.getName());
         userUpdated.setEmail(userDto.getEmail());

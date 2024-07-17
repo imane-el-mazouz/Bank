@@ -8,6 +8,7 @@ import {UserService} from "../../service/user.service";
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
+  styleUrl: './user-list.component.scss' ,
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLink ]
 })

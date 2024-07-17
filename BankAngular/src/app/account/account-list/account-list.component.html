@@ -1,1 +1,35 @@
-<p>account-list works!</p>
+<main class="main">
+  <div class="container">
+    <div class="card my-5">
+      <div class="card-body">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Type</th>
+            <th scope="col">Sold</th>
+            <th scope="col">RIB</th>
+            <th scope="col">Date</th>
+            <th scope="col">Account Closed</th>
+            <th scope="col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let account of accounts">
+            <td>{{ account.idA }}</td>
+            <td>{{ account.typeA }}</td>
+            <td>{{ account.sold }}</td>
+            <td>{{ account.rib }}</td>
+            <td>{{ account.date }}</td>
+            <td>{{ account.accountClosed }}</td>
+            <td>
+              <a class="btn btn-primary" [routerLink]="['/updateAccount', account.idA]">Update Account</a>
+              <button class="btn btn-danger" type="button" (click)="deleteAccount(account.idA)">Delete</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
