@@ -8,6 +8,8 @@ import {HomeComponent} from "./app/components/home/home.component";
 import {UserListComponent} from "./app/user/user-list/user-list.component";
 import {UserService} from "./app/service/user.service";
 import {AppComponent} from "./app/app.component";
+import {RouterModule} from "@angular/router";
+import {routes} from "./app/app.routes";
 
 
 
@@ -18,11 +20,15 @@ import {AppComponent} from "./app/app.component";
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    AppComponent
+    AppComponent,
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    UserListComponent,
 
   ],
   providers: [UserService],

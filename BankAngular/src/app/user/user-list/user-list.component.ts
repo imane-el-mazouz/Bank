@@ -1,39 +1,36 @@
-
-import {Component, OnInit} from '@angular/core';
-import {User} from "../../model/user";
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { User } from '../../model/user';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import {UserService} from "../../service/user.service";
-import {NgForOf} from "@angular/common";
-import {RouterLink, RouterOutlet} from "@angular/router";
+
 
 @Component({
   selector: 'app-user-list',
-  standalone: true,
-  imports: [
-    NgForOf,
-    RouterLink,
-    RouterOutlet
-  ],
   templateUrl: './user-list.component.html',
-  styleUrl: './user-list.component.scss'
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterLink ]
 })
-export class UserListComponent implements OnInit{
-  users : User[] = [];
+export class UserListComponent implements OnInit {
+  users: User[] = [];
 
-  constructor(private userService : UserService) {}
-
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.findAll().subscribe(data =>{
-      this.users= data;
+    this.userService.findAll().subscribe(data => {
+      this.users = data;
     });
-
-
-
-
   }
 
+  deleteUser(id: number): void {
+    this.userService.deleteUser(id).subscribe(() => {
+      this.users = this.users.filter(user => user.id !== id);
+    });
+  }
 
-  deleteUser(id: number) {
-
+  updateUser(id: number, user: User): void {
+    this.userService.updateUser(id, user).subscribe(()=> {
+      this.users = this.users.filter(user => user.id !== id);
+    });
   }
 }

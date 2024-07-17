@@ -38,7 +38,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public UserDto saveUser(User userDto) {
+    public UserDto saveUser(UserDto userDto) {
         User user = new User();
         user.setEmail(userDto.getEmail());
         user.setName(userDto.getName());
