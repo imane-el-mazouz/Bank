@@ -1,23 +1,26 @@
-import { Component } from '@angular/core';
-import {Account} from "../../model/account";
-import {AccountService} from "../../service/account.service";
-import {NgForOf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Account } from '../../model/account';
+import { AccountService } from '../../service/account.service';
+import {RouterLink, RouterOutlet} from "@angular/router";
+import {CommonModule, DatePipe, NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-account-list',
+  templateUrl: './account-list.component.html',
   standalone: true,
   imports: [
+    RouterLink,
+    DatePipe,
     NgForOf,
-    RouterLink
+    CommonModule,
+    RouterOutlet
   ],
-  templateUrl: './account-list.component.html',
-  styleUrl: './account-list.component.scss'
+  styleUrls: ['./account-list.component.scss']
 })
-export class AccountListComponent {
-     accounts : Account[] = [];
+export class AccountListComponent implements OnInit {
+  accounts: Account[] = [];
 
-     constructor(private accountService : AccountService) { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.accountService.findAll().subscribe((data: Account[]) => {
@@ -25,11 +28,9 @@ export class AccountListComponent {
     });
   }
 
-
-  deleteAccount(idA: number) : void {
-       this.accountService.deleteAccount(idA , account).subscribe( () => {
-         this.accounts.filter(account => account.idA !== idA);
-       })
+  deleteAccount(id: number): void {
+    this.accountService.deleteAccount(id).subscribe(() => {
+      this.accounts = this.accounts.filter(account => account.idA !== id);
+    });
   }
 }
-

@@ -20,11 +20,11 @@
             <td>{{ account.typeA }}</td>
             <td>{{ account.sold }}</td>
             <td>{{ account.rib }}</td>
-            <td>{{ account.date }}</td>
+            <td>{{ account.date | date }}</td>
             <td>{{ account.accountClosed }}</td>
             <td>
               <a class="btn btn-primary" [routerLink]="['/updateAccount', account.idA]">Update Account</a>
-              <button class="btn btn-danger" type="button" (click)="deleteAccount(account.idA)">Delete</button>
+              <button class="btn btn-danger" (click)="deleteAccount(account.idA)">Delete</button>
             </td>
           </tr>
           </tbody>

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Account} from "../model/account";
-import {User} from "../model/user";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Account } from '../model/account';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +11,11 @@ export class AccountService {
 
   constructor(private http: HttpClient) { }
 
-
-  findAll(): Observable<Account []> {
-    return this.http.get<Account[]>(`${this.apiUrl}/all`);
+  findAll(): Observable<Account[]> {
+    return this.http.get<Account[]>(this.apiUrl);
   }
 
-  deleteAccount(idA: number, account: Account) {
-
+  deleteAccount(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
