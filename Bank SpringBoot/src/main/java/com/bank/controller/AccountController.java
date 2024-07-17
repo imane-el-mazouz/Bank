@@ -132,6 +132,7 @@ import com.bank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -151,7 +152,7 @@ public class AccountController {
   @Autowired
   private UserService userService;
 
-  @GetMapping
+  @GetMapping("/all")
   public ResponseEntity<List<Account>> getAllAccounts() {
     List<Account> accounts = accountService.getAllAccounts();
     return ResponseEntity.ok(accounts);
@@ -213,5 +214,11 @@ public class AccountController {
   public ResponseEntity<List<Transaction>> getAccountTransactions(@PathVariable Long id) {
     List<Transaction> transactions = accountService.getAccountTransactions(id);
     return ResponseEntity.ok(transactions);
+  }
+  @GetMapping("/my-accounts")
+  public ResponseEntity<List<Account>> getUserAccounts(Authentication authentication) {
+    String username = authentication.getName();
+    List<Account> accounts = accountService.getAccountsByUsername(username);
+    return ResponseEntity.ok(accounts);
   }
 }

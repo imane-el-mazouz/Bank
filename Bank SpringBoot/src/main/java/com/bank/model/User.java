@@ -1,11 +1,14 @@
 package com.bank.model;
 
+import com.bank.exception.UserNotFoundException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
 @Getter
 @Setter
@@ -37,4 +40,7 @@ public class User {
     this.profession = profession;
 
   }
+
+
+
 }

@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Account } from '../model/account';
+import {Account} from "../model/account";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  private apiUrl = 'http://localhost:8080/api/account';
+  private apiUrl = 'http://localhost:8081/api/account';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  findAll(): Observable<Account[]> {
-    return this.http.get<Account[]>(this.apiUrl);
+  getAllAccounts(): Observable<Account[]> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.getToken());
+    return this.http.get<Account[]>(`${this.apiUrl}/all`, { headers });
   }
 
-  deleteAccount(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  private getToken(): string {
+    return 'your-jwt-token';
   }
 }

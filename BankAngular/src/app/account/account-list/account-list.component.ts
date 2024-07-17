@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from '../../model/account';
-import { AccountService } from '../../service/account.service';
-import {RouterLink, RouterOutlet} from "@angular/router";
-import {CommonModule, DatePipe, NgForOf} from "@angular/common";
+import { UserService } from '../../service/user.service';
+import {RouterLink} from "@angular/router";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-account-list',
@@ -10,27 +10,28 @@ import {CommonModule, DatePipe, NgForOf} from "@angular/common";
   standalone: true,
   imports: [
     RouterLink,
-    DatePipe,
-    NgForOf,
-    CommonModule,
-    RouterOutlet
+    DatePipe
   ],
   styleUrls: ['./account-list.component.scss']
 })
 export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
 
-  constructor(private accountService: AccountService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.accountService.findAll().subscribe((data: Account[]) => {
-      this.accounts = data;
-    });
+    this.userService.getUserAccounts().subscribe(
+      data => this.accounts = data,
+      error => console.error('Error fetching accounts:', error)
+    );
   }
 
-  deleteAccount(id: number): void {
-    this.accountService.deleteAccount(id).subscribe(() => {
-      this.accounts = this.accounts.filter(account => account.idA !== id);
-    });
+  // deleteAccount(idA: number): void {
+  //   this.userService.deleteAccount(idA).subscribe(() => {
+  //     this.accounts = this.accounts.filter(account => account.idA !== idA);
+  //   });
+  // }
+  deleteAccount(idA: any) {
+
   }
 }

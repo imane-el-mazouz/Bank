@@ -1,35 +1,99 @@
 <main class="main">
-  <div class="container">
-    <div class="card my-5">
-      <div class="card-body">
-        <table class="table table-bordered table-striped">
-          <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Type</th>
-            <th scope="col">Sold</th>
-            <th scope="col">RIB</th>
-            <th scope="col">Date</th>
-            <th scope="col">Account Closed</th>
-            <th scope="col">Actions</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let account of accounts">
-            <td>{{ account.idA }}</td>
-            <td>{{ account.typeA }}</td>
-            <td>{{ account.sold }}</td>
-            <td>{{ account.rib }}</td>
-            <td>{{ account.date | date }}</td>
-            <td>{{ account.accountClosed }}</td>
-            <td>
-              <a class="btn btn-primary" [routerLink]="['/updateAccount', account.idA]">Update Account</a>
-              <button class="btn btn-danger" (click)="deleteAccount(account.idA)">Delete</button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+<!--  <div *ngIf="accounts.length > 0; else noAccounts">-->
+<!--    <h2>Your Accounts</h2>-->
+<!--    <ul>-->
+<!--      <li *ngFor="let account of accounts">-->
+<!--        Account ID: {{ account.idA }},-->
+<!--        Balance: {{ account.sold }}-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--  <ng-template #noAccounts>-->
+<!--    <p>No accounts found.</p>-->
+<!--  </ng-template>-->
+  <main class="main">
+    <div *ngIf="accounts.length > 0; else noAccounts">
+      <h2>Your Accounts</h2>
+      <div class="container">
+        <div class="card my-5">
+          <div class="card-body">
+            <table class="table table-bordered table-striped">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Type</th>
+                <th scope="col">Balance</th>
+                <th scope="col">RIB</th>
+                <th scope="col">Date</th>
+                <th scope="col">Account Closed</th>
+                <th scope="col">Closure Reason</th>
+                <th scope="col">Bank</th>
+                <th scope="col">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let account of accounts">
+                <td>{{ account.idA }}</td>
+                <td>{{ account.typeA }}</td>
+                <td>{{ account.sold }}</td>
+                <td>{{ account.rib }}</td>
+                <td>{{ account.date | date }}</td>
+                <td>{{ account.accountClosed }}</td>
+                <td>{{ account.closeureReason }}</td>
+                <td>{{ account.bank }}</td>
+                <td>
+                  <a class="btn btn-primary" [routerLink]="['/updateAccount', account.idA]">Update Account</a>
+                  <button class="btn btn-danger" (click)="deleteAccount(account.idA)">Delete</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    <ng-template #noAccounts>
+      <p>No accounts found.</p>
+    </ng-template>
+  </main>
+
+  <!--  <div class="container">-->
+<!--    <div class="card my-5">-->
+<!--      <div class="card-body">-->
+<!--        <table class="table table-bordered table-striped">-->
+<!--          <thead class="thead-dark">-->
+<!--          <tr>-->
+<!--            <th scope="col">#</th>-->
+<!--            <th scope="col">TypeA</th>-->
+<!--            <th scope="col">Sold</th>-->
+<!--            <th scope="col">RIB</th>-->
+<!--            <th scope="col">Date</th>-->
+<!--            <th scope="col">Account Closed</th>-->
+<!--            <th scope="col">closeureReason</th>-->
+<!--            <th scope="col">bank</th>-->
+<!--            <th scope="col">Actions</th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          <tr *ngFor="let account of accounts">-->
+<!--            <td>{{ account.idA }}</td>-->
+<!--            <td>{{ account.typeA }}</td>-->
+<!--            <td>{{ account.sold }}</td>-->
+<!--            <td>{{ account.rib }}</td>-->
+<!--            <td>{{ account.date | date }}</td>-->
+<!--            <td>{{ account.accountClosed }}</td>-->
+<!--            <td>{{ account.closeureReason }}</td>-->
+<!--            <td>{{ account.bank }}</td>-->
+
+<!--            <td>-->
+<!--              <a class="btn btn-primary" [routerLink]="['/updateAccount', account.idA]">Update Account</a>-->
+<!--              <button class="btn btn-danger" (click)="deleteAccount(account.idA)">Delete</button>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </main>
+

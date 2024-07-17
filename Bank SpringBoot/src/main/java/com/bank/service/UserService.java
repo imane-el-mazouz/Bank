@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,7 +58,10 @@ public class UserService implements UserDetailsService {
       );
   }
 
-
+  public User findUserById(Long id) {
+    Optional<User> userOptional = userRepository.findById(id);
+    return userOptional.orElseThrow(() -> new UserNotFoundException("User not found!"));
+  }
 
   public UserDto updateUser(UserDto userDto, Long id) {
         User userUpdated = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("user not found !"));
