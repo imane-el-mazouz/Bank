@@ -5,6 +5,8 @@ import {UserFormComponent} from "./user/user-form/user-form.component";
 import {UpdateUserFormComponent} from "./user/user-update/user-update.component";
 import {AccountListComponent} from "./account/account-list/account-list.component";
 import {LoginComponent} from "./login/login.component";
+import {SignupComponent} from "./singup/singup.component";
+
 
 export const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -13,5 +15,6 @@ export const routes: Routes = [
   { path: 'updateUser/:id', component: UpdateUserFormComponent },
   { path: 'accounts', component: AccountListComponent },
   { path: 'login', component: LoginComponent },
+  { path : 'signup' , component: SignupComponent},
   { path: '', redirectTo: '/addUser', pathMatch: 'full' }
 ];

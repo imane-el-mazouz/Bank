@@ -1,31 +1,46 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../service/user-auth-service.service';
-import { FormsModule } from '@angular/forms';
-import { CommonModule, NgForOf } from '@angular/common';
-import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
+  templateUrl: './login.component.html',
   standalone: true,
   imports: [
-    FormsModule,
     CommonModule,
-    RouterModule,
-    RouterOutlet,
-    RouterLink,
-    NgForOf
+    ReactiveFormsModule
   ],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private authService: AuthService, private http: HttpClient) { }
+  loginForm: FormGroup;
 
-  login(username: string, password: string): void {
-    this.http.post<{ token: string }>('http://localhost:8081/api/auth/login', { username, password })
-      .subscribe(response => {
-        this.authService.setToken(response.token);
-      });
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.loginForm = this.fb.group({
+      name: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  login(): void {
+    const { name, password } = this.loginForm.value;
+    this.http.post<{ accessToken: string, user: any }>('http://localhost:8081/api/auth/login', { name, password })  // Use 'name' instead of 'username'
+      .subscribe(
+        response => {
+          this.authService.setToken(response.accessToken);
+          this.router.navigate(['/home']);
+        },
+        error => {
+          console.error('Error during login', error);
+        }
+      );
   }
 }

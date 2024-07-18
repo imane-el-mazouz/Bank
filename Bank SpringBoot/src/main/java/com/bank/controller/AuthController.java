@@ -3,6 +3,7 @@ package com.bank.controller;
 import com.bank.dto.AuthRequestDTO;
 import com.bank.dto.JwtResponseDTO;
 import com.bank.dto.UserDto;
+import com.bank.model.User;
 import com.bank.service.UserAuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -36,13 +37,19 @@ public class AuthController {
         }
     }
 
-    @PostMapping("/signup")
-    public ResponseEntity<?> saveUser(@RequestBody UserDto userDto) {
-        try {
-            var jwtResponseDTO = userAuthService.signUp(userDto);
-            return ResponseEntity.ok(jwtResponseDTO);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }
-    }
+  @PostMapping("/signup")
+  public ResponseEntity<JwtResponseDTO> registerUser(@RequestBody UserDto userDto) {
+    JwtResponseDTO response = userAuthService.signUp(userDto);
+    return ResponseEntity.ok(response);
+  }
+
+//    @PostMapping("/signup")
+//    public ResponseEntity<?> saveUser(@RequestBody UserDto userDto) {
+//        try {
+//            var jwtResponseDTO = userAuthService.signUp(userDto);
+//            return ResponseEntity.ok(jwtResponseDTO);
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+//        }
+//    }
 }

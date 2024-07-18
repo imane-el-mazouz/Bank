@@ -7,6 +7,8 @@ import com.bank.model.User;
 import com.bank.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -46,31 +48,31 @@ public class UserAuthService implements UserDetailsService {
                 .build();
     }
 
-    public JwtResponseDTO login(AuthRequestDTO authRequestDTO) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(authRequestDTO.getName(), authRequestDTO.getPassword())
-        );
-
-        if (authentication.isAuthenticated()) {
-            User user = userRepository.findByName(authRequestDTO.getName());
-            String token = jwtService.generateToken(authRequestDTO.getName());
-
-            UserDto userDto = UserDto.builder()
-                    .idU(user.getIdU())
-                    .name(user.getName())
-                    .email(user.getEmail())
-                    .profession(user.getProfession())
-                    .phone(user.getPhone())
-                    .build();
-
-            return JwtResponseDTO.builder()
-                    .accessToken(token)
-                    .user(userDto)
-                    .build();
-        } else {
-            throw new UsernameNotFoundException("Invalid user request.");
-        }
-    }
+//    public JwtResponseDTO login(AuthRequestDTO authRequestDTO) {
+//        Authentication authentication = authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(authRequestDTO.getName(), authRequestDTO.getPassword())
+//        );
+//
+//        if (authentication.isAuthenticated()) {
+//            User user = userRepository.findByName(authRequestDTO.getName());
+//            String token = jwtService.generateToken(authRequestDTO.getName());
+//
+//            UserDto userDto = UserDto.builder()
+//                    .idU(user.getIdU())
+//                    .name(user.getName())
+//                    .email(user.getEmail())
+//                    .profession(user.getProfession())
+//                    .phone(user.getPhone())
+//                    .build();
+//
+//            return JwtResponseDTO.builder()
+//                    .accessToken(token)
+//                    .user(userDto)
+//                    .build();
+//        } else {
+//            throw new UsernameNotFoundException("Invalid user request.");
+//        }
+//    }
 
     public JwtResponseDTO signUp(UserDto userRequest) {
         if (userRequest.getName() == null) {
@@ -91,4 +93,40 @@ public class UserAuthService implements UserDetailsService {
                 .user(userRequest)
                 .build();
     }
+
+  public JwtResponseDTO login(AuthRequestDTO authRequestDTO) {
+    Authentication authentication = authenticationManager.authenticate(
+      new UsernamePasswordAuthenticationToken(authRequestDTO.getName(), authRequestDTO.getPassword())
+    );
+
+    if (authentication.isAuthenticated()) {
+      User user = userRepository.findByName(authRequestDTO.getName());
+      String token = jwtService.generateToken(authRequestDTO.getName());
+
+      UserDto userDto = UserDto.builder()
+        .idU(user.getIdU())
+        .name(user.getName())
+        .email(user.getEmail())
+        .profession(user.getProfession())
+        .phone(user.getPhone())
+        .build();
+
+      return JwtResponseDTO.builder()
+        .accessToken(token)
+        .user(userDto)
+        .build();
+    } else {
+      throw new UsernameNotFoundException("Invalid user request.");
+    }
+  }
+
+//  public ResponseEntity<?> registerUser(User user) {
+//    if(userRepository.existsByUsername(user.getUsername())) {
+//      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username is already taken!");
+//    }
+//    user.setPassword(passwordEncoder.encode(user.getPassword()));
+//    userRepository.save(user);
+//    return ResponseEntity.status(HttpStatus.OK).body("User registered successfully");
+//  }
+
 }
