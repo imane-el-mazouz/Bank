@@ -1,1 +1,34 @@
-<p>account-form works!</p>
+<div class="container">
+  <div class="card my-5">
+    <div class="card-body">
+      <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="typeA">Email</label>
+          <input type="enum" formControlName="typeA" class="form-control" id="typeA" placeholder="Enter your account's type" required>
+        </div>
+        <div>
+          <button (click)="onClick()">click me</button>
+          <p *ngIf="val === enum.currentAccount">currentAccount</p>
+          <p *ngIf="val === enum.savingAccount">savingAccount</p>
+        </div>
+        <div class="form-group">
+          <label for="sold">Name</label>
+          <input type="number" formControlName="sold" class="form-control" id="sold" placeholder="Enter account's sold" required>
+        </div>
+        <div class="form-group">
+          <label for="rib">Password</label>
+          <input type="number" formControlName="rib" class="form-control" id="rib" placeholder="Enter rib" required>
+        </div>
+        <div class="form-group">
+          <label for="date">Phone</label>
+          <input type="datetime-local" formControlName="date" class="form-control" id="date" placeholder="Enter date" required>
+        </div>
+        <div class="form-group">
+          <label for="bank">Profession</label>
+          <input type="enum" formControlName="bank" class="form-control" id="bank" placeholder="Enter your bank" required>
+        </div>
+        <button type="submit" [disabled]="!accountForm.valid" class="btn btn-info">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -215,7 +215,7 @@ public class AccountController {
     List<Transaction> transactions = accountService.getAccountTransactions(id);
     return ResponseEntity.ok(transactions);
   }
-  @GetMapping("/my-accounts")
+  @GetMapping("/accounts")
   public ResponseEntity<List<Account>> getUserAccounts(Authentication authentication) {
     String username = authentication.getName();
     List<Account> accounts = accountService.getAccountsByUsername(username);

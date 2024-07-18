@@ -36,10 +36,10 @@ export class UserService {
     return this.http.put<User>(`${this.apiUrl}/${id}`, user);
   }
 
-  getUserAccounts(): Observable<Account[]> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Account[]>(`${this.apiUrl}/accounts`, { headers });
-  }
+  // getUserAccounts(): Observable<Account[]> {
+  //   const token = localStorage.getItem('token');
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  //   return this.http.get<Account[]>(`${this.apiUrl}/accounts/${id}`, { headers });
+  // }
 
 }
