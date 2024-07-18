@@ -2,6 +2,8 @@ import { Beneficiary } from './beneficiary';
 import { User } from './user';
 import { Card } from './card';
 import { Transaction } from './transaction';
+import {TypeA} from "../Enum/TypeA";
+import {Bank} from "../Enum/bank";
 
 export class Account {
   idA!: number;
@@ -19,14 +21,6 @@ export class Account {
   incomingTransactions!: Transaction[];
 }
 
-export enum TypeA {
-  CurrentAccount = 'currentAccount',
-  SavingAccount = 'savingAccount'
-}
 
-export enum Bank {
-  CIH = 'cih',
-  BMCE = 'bmce',
-  AttijariWafaBank = 'AttijariWafaBank',
-  MaghrebBank = 'MaghrebBank'
-}
+
+

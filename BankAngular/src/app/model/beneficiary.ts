@@ -1,4 +1,5 @@
 import {Transaction} from "./transaction";
+import {Bank} from "../Enum/bank";
 
 export class Beneficiary{
      idB !: number;
@@ -11,10 +12,3 @@ export class Beneficiary{
 
 }
 
-enum Bank{
-  cih,
-  bmce,
-  AttijariWafaBank,
-  MaghrebBank
-
-}

@@ -1,3 +1,7 @@
+import {TypeC} from "../Enum/type-c";
+import {Status} from "../Enum/status";
+import {Reason} from "../Enum/reason";
+
 export class Card{
   idC!: number;
   expirationDate!: Date;
@@ -8,20 +12,8 @@ export class Card{
 
 
 }
-enum TypeC{
-  credit,
-  debit,
-}
 
-enum Status{
-  activated,
-  desactivated,
-  bloqued
 
-}
 
-enum Reason{
-  loss,
-  theft,
-  none,
-}
+
+

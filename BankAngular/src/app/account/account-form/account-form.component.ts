@@ -1,6 +1,18 @@
 import { Component } from '@angular/core';
-import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NgIf} from "@angular/common";
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
+
+enum TypeA {
+  CurrentAccount = 'currentAccount',
+  SavingAccount = 'savingAccount'
+}
+
+enum Bank {
+  CIH = 'cih',
+  BMCE = 'bmce',
+  AttijariWafaBank = 'AttijariWafaBank',
+  MaghrebBank = 'MaghrebBank'
+}
 
 @Component({
   selector: 'app-account-form',
@@ -11,30 +23,36 @@ import {NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './account-form.component.html',
-  styleUrl: './account-form.component.scss'
+  styleUrls: ['./account-form.component.scss']
 })
-
-enum TypeA {
-  CurrentAccount = 'currentAccount',
-  SavingAccount = 'savingAccount'
-}
 export class AccountFormComponent {
   accountForm: FormGroup;
-  enum: typeof  = TypeA;
-  val: number = TypeA.currentAccount;
+  typeAEnum = TypeA;
+  bankEnum = Bank;
+  val: TypeA = TypeA.CurrentAccount;
+  bank: Bank = Bank.CIH;
 
-  onClick() {
-    this.val =
-      this.val === TypeA.currentAccount ? TypeA.savingAccount : MyEnum.currentAccount;
+  constructor(private fb: FormBuilder) {
+    this.accountForm = this.fb.group({
+      typeA: ['', Validators.required],
+      sold: ['', [Validators.required, Validators.min(0)]],
+      rib: ['', Validators.required],
+      date: ['', Validators.required],
+      bank: ['', Validators.required]
+    });
   }
-}
-}
 
   onSubmit() {
-
+    if (this.accountForm.valid) {
+      console.log(this.accountForm.value);
+    }
   }
 
-  onClick() {
+  toggleAccountType() {
+    this.val = this.val === TypeA.CurrentAccount ? TypeA.SavingAccount : TypeA.CurrentAccount;
+  }
 
+  toggleBank() {
+    this.bank = this.bank === Bank.CIH ? Bank.BMCE : this.bank === Bank.BMCE ? Bank.AttijariWafaBank : this.bank === Bank.AttijariWafaBank ? Bank.MaghrebBank : Bank.CIH;
   }
 }

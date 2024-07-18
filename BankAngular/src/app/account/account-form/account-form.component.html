@@ -3,29 +3,37 @@
     <div class="card-body">
       <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="typeA">Email</label>
-          <input type="enum" formControlName="typeA" class="form-control" id="typeA" placeholder="Enter your account's type" required>
+          <label for="typeA">Account Type</label>
+          <input type="text" formControlName="typeA" class="form-control" id="typeA" placeholder="Enter your account's type" required>
         </div>
         <div>
-          <button (click)="onClick()">click me</button>
-          <p *ngIf="val === enum.currentAccount">currentAccount</p>
-          <p *ngIf="val === enum.savingAccount">savingAccount</p>
+          <button type="button" (click)="toggleAccountType()">Click me</button>
+          <p *ngIf="val === typeAEnum.CurrentAccount">Current Account</p>
+          <p *ngIf="val === typeAEnum.SavingAccount">Saving Account</p>
         </div>
         <div class="form-group">
-          <label for="sold">Name</label>
+          <label for="sold">Sold</label>
           <input type="number" formControlName="sold" class="form-control" id="sold" placeholder="Enter account's sold" required>
         </div>
         <div class="form-group">
-          <label for="rib">Password</label>
+          <label for="rib">RIB</label>
           <input type="number" formControlName="rib" class="form-control" id="rib" placeholder="Enter rib" required>
         </div>
         <div class="form-group">
-          <label for="date">Phone</label>
+          <label for="date">Date</label>
           <input type="datetime-local" formControlName="date" class="form-control" id="date" placeholder="Enter date" required>
         </div>
         <div class="form-group">
-          <label for="bank">Profession</label>
-          <input type="enum" formControlName="bank" class="form-control" id="bank" placeholder="Enter your bank" required>
+          <label for="bank">Bank</label>
+          <input type="text" formControlName="bank" class="form-control" id="bank" placeholder="Enter your bank" required>
+        </div>
+
+        <div>
+          <button type="button" (click)="toggleBank()">Click me</button>
+          <p *ngIf="bank === bankEnum.CIH">Cih</p>
+          <p *ngIf="bank === bankEnum.BMCE">BMCE</p>
+          <p *ngIf="bank === bankEnum.AttijariWafaBank">AttijariWafaBank</p>
+          <p *ngIf="bank === bankEnum.MaghrebBank">MaghrebBank</p>
         </div>
         <button type="submit" [disabled]="!accountForm.valid" class="btn btn-info">Submit</button>
       </form>

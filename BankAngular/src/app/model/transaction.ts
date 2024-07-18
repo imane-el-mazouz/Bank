@@ -1,5 +1,7 @@
 import {Account} from "./account";
 import {Beneficiary} from "./beneficiary";
+import {TypeC} from "../Enum/type-c";
+import {TypeTransaction} from "../Enum/type-transaction";
 
 export class Transaction{
   idT !: number;
@@ -15,14 +17,7 @@ export class Transaction{
 }
 
 
-enum TypeTransaction{
-  internal,
-  external,
-}
 
 
-enum TypeC{
-  credit,
-  debit
 
-}
+

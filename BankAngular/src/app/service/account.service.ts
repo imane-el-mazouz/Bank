@@ -42,7 +42,9 @@ export class AccountService {
   }
 
   saveAccount(account: Account): Observable<Account> {
-    return this.http.post<Account>(this.apiUrl, account);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post<Account>(this.apiUrl, account, { headers });
   }
 
   deleteAccount(id: number): Observable<void> {

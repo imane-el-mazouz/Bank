@@ -7,11 +7,14 @@ import {AccountListComponent} from "./account/account-list/account-list.componen
 import {LoginComponent} from "./login/login.component";
 import {SignupComponent} from "./singup/singup.component";
 import {AccountUpdateComponent} from "./account/account-update/account-update.component";
+import {AccountFormComponent} from "./account/account-form/account-form.component";
 
 
 export const routes: Routes = [
   { path: 'users', component: UserListComponent },
   { path: 'addUser', component: UserFormComponent },
+  { path: 'addAccount', component: AccountFormComponent },
+
   { path: 'home', component: HomeComponent },
   { path: 'updateUser/:id', component: UpdateUserFormComponent },
   { path: 'updateAccount/:id', component: AccountUpdateComponent },
