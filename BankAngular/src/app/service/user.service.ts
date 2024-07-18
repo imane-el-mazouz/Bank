@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import { Account } from '../model/account';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   deleteAccount(idA: number) {
-      throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.');
   }
   private apiUrl = 'http://localhost:8081/api/user';
 

@@ -19,6 +19,8 @@ public class MyConfiguration {
     config.addAllowedMethod("*");
     source.registerCorsConfiguration("/api/users/**", config);
     source.registerCorsConfiguration("/api/account/**", config);
+    source.registerCorsConfiguration("/api/auth/**", config);
+    source.registerCorsConfiguration("/api/auth/login", config);
 
     return new CorsFilter(source);
   }

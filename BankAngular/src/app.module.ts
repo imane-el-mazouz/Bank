@@ -31,10 +31,8 @@ import {AuthInterceptorService} from "./app/service/auth-interceptor-service.ser
   providers: [
     UserService,
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true
-    }
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true
+}
   ],
   bootstrap: []
 })
