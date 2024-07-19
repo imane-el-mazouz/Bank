@@ -9,17 +9,23 @@ import {SignupComponent} from "./singup/singup.component";
 import {AccountUpdateComponent} from "./account/account-update/account-update.component";
 import {AccountFormComponent} from "./account/account-form/account-form.component";
 import {AccountCloseComponent} from "./account/account-close/account-close.component";
+import {BeneficiaryFormComponent} from "./beneficiary/beneficiary-form/beneficiary-form.component";
+import {BeneficiaryListComponent} from "./beneficiary/beneficiary-list/beneficiary-list.component";
+import {BeneficiaryUpdateComponent} from "./beneficiary/beneficiary-update/beneficiary-update.component";
 
 
 export const routes: Routes = [
   { path: 'users', component: UserListComponent },
+  { path: 'beneficiaries', component: BeneficiaryListComponent },
   { path: 'addUser', component: UserFormComponent },
   { path: 'addAccount', component: AccountFormComponent },
+  { path: 'addBenef', component: BeneficiaryFormComponent },
 
   { path: 'home', component: HomeComponent },
   { path: 'updateUser/:id', component: UpdateUserFormComponent },
   { path: 'updateAccount/:id', component: AccountUpdateComponent },
   { path: 'close/:id', component: AccountCloseComponent },
+  { path: 'updatebenef/:id', component: BeneficiaryUpdateComponent },
 
   { path: 'accounts', component: AccountListComponent },
   { path: 'login', component: LoginComponent },
