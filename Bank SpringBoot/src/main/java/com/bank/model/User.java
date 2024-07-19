@@ -5,7 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -16,7 +19,7 @@ import java.util.function.Supplier;
 @NoArgsConstructor
 @ToString
 @Entity
-public class User {
+public class User{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long idU;
@@ -40,7 +43,5 @@ public class User {
     this.profession = profession;
 
   }
-
-
 
 }

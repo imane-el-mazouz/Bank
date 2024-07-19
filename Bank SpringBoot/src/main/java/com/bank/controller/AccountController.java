@@ -126,6 +126,7 @@ package com.bank.controller;
 
 import com.bank.model.Account;
 import com.bank.model.Transaction;
+import com.bank.model.User;
 import com.bank.service.AccountService;
 import com.bank.service.TransactionService;
 import com.bank.service.UserService;
@@ -133,6 +134,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -140,7 +142,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/account")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class AccountController {
 
   @Autowired
@@ -170,17 +172,29 @@ public class AccountController {
     return ResponseEntity.ok(accounts);
   }
 
-  @PostMapping("/save/{userId}")
-  public ResponseEntity<Account> saveAccountForUser(@PathVariable Long userId, @RequestBody Account account) {
-    try {
-      Account savedAccount = accountService.saveAccount(userId, account);
-      return ResponseEntity.ok(savedAccount);
-    } catch (IllegalArgumentException e) {
-      return ResponseEntity.notFound().build();
-    } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-    }
-  }
+//  @PostMapping("/save/{userId}")
+//  public ResponseEntity<Account> saveAccountForUser(@PathVariable Long userId, @RequestBody Account account) {
+//    try {
+//      Account savedAccount = accountService.saveAccount(userId, account);
+//      return ResponseEntity.ok(savedAccount);
+//    } catch (IllegalArgumentException e) {
+//      return ResponseEntity.notFound().build();
+//    } catch (Exception e) {
+//      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//    }
+//  }
+//@PostMapping("/save")
+//public ResponseEntity<Account> saveAccount(@RequestBody Account account) {
+//  Account savedAccount = accountService.saveAccount(account);
+//  return new ResponseEntity<>(savedAccount, HttpStatus.CREATED);
+//}
+@PostMapping("/save")
+public ResponseEntity<Account> addAccount(@RequestBody Account account) {
+  Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+  String username = loggedInUser.getName();
+  account = accountService.saveAccount(username, account);
+  return ResponseEntity.ok(account);
+}
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteAccount(@PathVariable Long id) {

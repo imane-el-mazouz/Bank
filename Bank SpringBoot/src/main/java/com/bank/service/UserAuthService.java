@@ -37,7 +37,7 @@ public class UserAuthService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByName(username);
+        User user = userRepository.findByName(username).get();
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
@@ -100,7 +100,7 @@ public class UserAuthService implements UserDetailsService {
     );
 
     if (authentication.isAuthenticated()) {
-      User user = userRepository.findByName(authRequestDTO.getName());
+      User user = userRepository.findByName(authRequestDTO.getName()).get();
       String token = jwtService.generateToken(authRequestDTO.getName());
 
       UserDto userDto = UserDto.builder()

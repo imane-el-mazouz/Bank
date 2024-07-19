@@ -13,6 +13,8 @@ import com.bank.repository.AccountRepository;
 import com.bank.repository.CardRepository;
 import com.bank.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,8 +49,9 @@ public class AccountService {
     return accountRepository.findByUserId(idU);
   }
 
-  public Account saveAccount(Long userId, Account account) {
-    User user = userRepository.findById(userId)
+  @Transactional
+  public Account saveAccount(String username, Account account) {
+    User user = userRepository.findByName(username)
       .orElseThrow(() -> new UserNotFoundException("User not found!"));
     account.setUser(user);
     Account savedAccount = accountRepository.save(account);
@@ -64,6 +67,36 @@ public class AccountService {
 
     return accountRepository.save(savedAccount);
   }
+
+//  public Account saveAccount(Account account, Long userId) {
+//    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//   userId = (Long) authentication.getPrincipal(); // Adjust based on your implementation
+//
+//    User user = userRepository.findById(userId)
+//      .orElseThrow(() -> new UserNotFoundException("User not found!"));
+//
+//    account.setUser(user);
+//
+//    // Save the account
+//    Account savedAccount = accountRepository.save(account);
+//
+//    // Create and set up a new card
+//    Card card = new Card();
+//    card.setExpirationDate(LocalDateTime.now().plusYears(2));
+//    card.setTypeCard(TypeC.debit);
+//    card.setStatus(Status.activated);
+//    card.setBlockingReason(Reason.none);
+//    card.setAccount(savedAccount);
+//
+//    // Save the card
+//    Card savedCard = cardRepository.save(card);
+//
+//    // Add the card to the account's card list
+//    savedAccount.getCards().add(savedCard);
+//
+//    // Save the updated account with the new card
+//    return accountRepository.save(savedAccount);
+//  }
 
   @Transactional
   public void deleteAccount(Long id) {
@@ -118,7 +151,7 @@ public class AccountService {
   }
 
   public List<Account> getAccountsByUsername(String username) {
-    User user = userRepository.findByName(username);
+    User user = userRepository.findByName(username).get();
     return accountRepository.findByUserId(user.getIdU());
   }
 }

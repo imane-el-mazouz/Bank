@@ -1,42 +1,30 @@
-<div class="container">
-  <div class="card my-5">
-    <div class="card-body">
-      <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="typeA">Account Type</label>
-          <input type="text" formControlName="typeA" class="form-control" id="typeA" placeholder="Enter your account's type" required>
-        </div>
-        <div>
-          <button type="button" (click)="toggleAccountType()">Click me</button>
-          <p *ngIf="val === typeAEnum.CurrentAccount">Current Account</p>
-          <p *ngIf="val === typeAEnum.SavingAccount">Saving Account</p>
-        </div>
-        <div class="form-group">
-          <label for="sold">Sold</label>
-          <input type="number" formControlName="sold" class="form-control" id="sold" placeholder="Enter account's sold" required>
-        </div>
-        <div class="form-group">
-          <label for="rib">RIB</label>
-          <input type="number" formControlName="rib" class="form-control" id="rib" placeholder="Enter rib" required>
-        </div>
-        <div class="form-group">
-          <label for="date">Date</label>
-          <input type="datetime-local" formControlName="date" class="form-control" id="date" placeholder="Enter date" required>
-        </div>
-        <div class="form-group">
-          <label for="bank">Bank</label>
-          <input type="text" formControlName="bank" class="form-control" id="bank" placeholder="Enter your bank" required>
-        </div>
-
-        <div>
-          <button type="button" (click)="toggleBank()">Click me</button>
-          <p *ngIf="bank === bankEnum.CIH">Cih</p>
-          <p *ngIf="bank === bankEnum.BMCE">BMCE</p>
-          <p *ngIf="bank === bankEnum.AttijariWafaBank">AttijariWafaBank</p>
-          <p *ngIf="bank === bankEnum.MaghrebBank">MaghrebBank</p>
-        </div>
-        <button type="submit" [disabled]="!accountForm.valid" class="btn btn-info">Submit</button>
-      </form>
+<div class="account-form-container">
+  <h2>{{ accountForm.get('id') ? 'Edit Account' : 'Create Account' }}</h2>
+  <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="typeA">Account Type</label>
+      <select id="typeA" formControlName="typeA" required>
+        <option *ngFor="let type of Object.values(typeAEnum)" [value]="type">{{ type }}</option>
+      </select>
     </div>
-  </div>
+    <div class="form-group">
+      <label for="sold">Sold</label>
+      <input id="sold" type="number" formControlName="sold" required>
+    </div>
+    <div class="form-group">
+      <label for="rib">RIB</label>
+      <input id="rib" type="text" formControlName="rib" required>
+    </div>
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input id="date" type="datetime-local" formControlName="date" required>
+    </div>
+    <div class="form-group">
+      <label for="bank">Bank</label>
+      <select id="bank" formControlName="bank" required>
+        <option *ngFor="let bank of Object.values(bankEnum)" [value]="bank">{{ bank }}</option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="accountForm.invalid">{{ accountForm.get('id') ? 'Update' : 'Create' }}</button>
+  </form>
 </div>
