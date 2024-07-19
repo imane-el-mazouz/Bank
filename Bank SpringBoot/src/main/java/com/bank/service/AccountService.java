@@ -13,8 +13,6 @@ import com.bank.repository.AccountRepository;
 import com.bank.repository.CardRepository;
 import com.bank.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -107,22 +105,64 @@ public class AccountService {
   }
 
   @Transactional
-  public Account updateAccount(Long id, Account updatedAccount) {
-    Account existingAccount = accountRepository.findById(id)
-      .orElseThrow(() -> new AccountNotFoundException("Account not found"));
-
-    existingAccount.setTypeA(updatedAccount.getTypeA());
-    existingAccount.setSold(updatedAccount.getSold());
-    existingAccount.setDate(updatedAccount.getDate());
-    existingAccount.setAccountClosed(updatedAccount.getAccountClosed());
-    existingAccount.setCloseureReason(updatedAccount.getCloseureReason());
-    existingAccount.setBank(updatedAccount.getBank());
-    existingAccount.setUser(updatedAccount.getUser());
-    existingAccount.setBeneficiaries(updatedAccount.getBeneficiaries());
-    existingAccount.setCards(updatedAccount.getCards());
-
-    return accountRepository.save(existingAccount);
+//  public void updateAccount(Long id, Account updatedAccount) {
+//    Account existingAccount = accountRepository.findById(id)
+//      .orElseThrow(() -> new AccountNotFoundException("Account not found"));
+//
+//    existingAccount.setTypeA(updatedAccount.getTypeA());
+//    existingAccount.setSold(updatedAccount.getSold());
+//    existingAccount.setDate(updatedAccount.getDate());
+//    existingAccount.setAccountClosed(updatedAccount.getAccountClosed());
+//    existingAccount.setCloseureReason(updatedAccount.getCloseureReason());
+//    existingAccount.setBank(updatedAccount.getBank());
+//    existingAccount.setUser(updatedAccount.getUser());
+//    existingAccount.setBeneficiaries(updatedAccount.getBeneficiaries());
+//    existingAccount.setCards(updatedAccount.getCards());
+//
+//    accountRepository.save(existingAccount);
+//  }
+//  public Account updateAccount(Long id, Account updatedAccount) {
+//    Account existingAccount = accountRepository.findById(id)
+//      .orElseThrow(() -> new AccountNotFoundException("Account not found"));
+//    existingAccount.setTypeA(updatedAccount.getTypeA());
+//    existingAccount.setSold(updatedAccount.getSold());
+//    existingAccount.setDate(updatedAccount.getDate());
+//    existingAccount.setAccountClosed(updatedAccount.getAccountClosed());
+//    existingAccount.setCloseureReason(updatedAccount.getCloseureReason());
+//    existingAccount.setBank(updatedAccount.getBank());
+//    existingAccount.setUser(updatedAccount.getUser());
+//    existingAccount.setBeneficiaries(updatedAccount.getBeneficiaries());
+//    existingAccount.setCards(updatedAccount.getCards());
+//
+//    return accountRepository.save(existingAccount);
+//  }
+  public Account updateAccount(Long id, Account account) throws AccountNotFoundException {
+    return accountRepository.findById(id).map(existingAccount -> {
+      existingAccount.setTypeA(account.getTypeA());
+      existingAccount.setSold(account.getSold());
+      existingAccount.setDate(account.getDate());
+      existingAccount.setBank(account.getBank());
+      return accountRepository.save(existingAccount);
+    }).orElseThrow(() -> new AccountNotFoundException("Account not found with id " + id));
   }
+
+//  public Account updateAccount(Long id, Account updatedAccount) {
+//    Account existingAccount = accountRepository.findById(id)
+//      .orElseThrow(() -> new AccountNotFoundException("Account not found"));
+//    existingAccount.setTypeA(updatedAccount.getTypeA());
+//    existingAccount.setSold(updatedAccount.getSold());
+//    existingAccount.setDate(updatedAccount.getDate());
+//    existingAccount.setAccountClosed(updatedAccount.getAccountClosed());
+//    existingAccount.setCloseureReason(updatedAccount.getCloseureReason());
+//    existingAccount.setBank(updatedAccount.getBank());
+//    existingAccount.setUser(updatedAccount.getUser());
+//    existingAccount.setBeneficiaries(updatedAccount.getBeneficiaries());
+//    existingAccount.setCards(updatedAccount.getCards());
+//
+//    return accountRepository.save(existingAccount);
+//  }
+
+
 
   @Transactional
   public void closeAccount(Long id, String reason) {

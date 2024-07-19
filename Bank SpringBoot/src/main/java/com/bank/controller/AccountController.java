@@ -124,6 +124,7 @@
 
 package com.bank.controller;
 
+import com.bank.exception.AccountNotFoundException;
 import com.bank.model.Account;
 import com.bank.model.Transaction;
 import com.bank.model.User;
@@ -202,11 +203,7 @@ public ResponseEntity<Account> addAccount(@RequestBody Account account) {
     return ResponseEntity.noContent().build();
   }
 
-  @PutMapping("/update/{id}")
-  public ResponseEntity<Account> updateAccount(@PathVariable Long id, @RequestBody Account account) {
-    Account updatedAccount = accountService.updateAccount(id, account);
-    return ResponseEntity.ok(updatedAccount);
-  }
+
 
   @PutMapping("/close/{id}")
   public ResponseEntity<Void> closeAccount(@PathVariable Long id, @RequestBody Map<String, String> request) {
@@ -217,6 +214,25 @@ public ResponseEntity<Account> addAccount(@RequestBody Account account) {
     accountService.closeAccount(id, reason);
     return ResponseEntity.noContent().build();
   }
+//  @PutMapping("/{id}")
+//  public ResponseEntity<Account> updateAccount(@PathVariable Long id, @RequestBody Account account) {
+//    Account updatedAccount = accountService.updateAccount(id, account);
+//    return ResponseEntity.ok(updatedAccount);
+//  }
+@PutMapping("/update/{id}")
+public ResponseEntity<Account> updateAccount(@PathVariable Long id, @RequestBody Account account) {
+  try {
+    Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+    String username = loggedInUser.getName();
+    Account updatedAccount = accountService.updateAccount(id, account);
+    return ResponseEntity.ok(updatedAccount);
+  } catch (AccountNotFoundException e) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+  } catch (Exception e) {
+    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+  }
+}
+
 
   @GetMapping("/{id}/balance")
   public ResponseEntity<Double> getAccountBalance(@PathVariable Long id) {
