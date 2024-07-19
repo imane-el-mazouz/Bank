@@ -168,11 +168,9 @@ public class AccountService {
   public void closeAccount(Long id, String reason) {
     Account account = accountRepository.findById(id)
       .orElseThrow(() -> new AccountNotFoundException("Account not found"));
-
     if (account.getSold() != 0) {
       throw new IllegalStateException("Account balance must be zero to close the account");
     }
-
     account.setAccountClosed(true);
     account.setCloseureReason(reason);
     accountRepository.save(account);

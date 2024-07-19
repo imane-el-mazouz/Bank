@@ -1,0 +1,10 @@
+<div class="account-form-container">
+  <h2>Close Account</h2>
+  <form [formGroup]="accountCloseForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="closureReason">Reason for Closure</label>
+      <input id="closureReason" type="text" formControlName="closureReason" required>
+    </div>
+    <button type="submit" [disabled]="accountCloseForm.invalid">Close Account</button>
+  </form>
+</div>

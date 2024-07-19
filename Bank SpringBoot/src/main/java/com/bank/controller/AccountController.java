@@ -203,14 +203,14 @@ public ResponseEntity<Account> addAccount(@RequestBody Account account) {
     return ResponseEntity.noContent().build();
   }
 
-
-
   @PutMapping("/close/{id}")
   public ResponseEntity<Void> closeAccount(@PathVariable Long id, @RequestBody Map<String, String> request) {
+    Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+    String username = loggedInUser.getName();
     String reason = request.get("reason");
-    if (reason == null || reason.isEmpty()) {
-      return ResponseEntity.badRequest().build();
-    }
+//    if (reason == null || reason.isEmpty()) {
+//      return ResponseEntity.badRequest().build();
+//    }
     accountService.closeAccount(id, reason);
     return ResponseEntity.noContent().build();
   }

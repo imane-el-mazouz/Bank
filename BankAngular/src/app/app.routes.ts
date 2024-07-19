@@ -8,6 +8,7 @@ import {LoginComponent} from "./login/login.component";
 import {SignupComponent} from "./singup/singup.component";
 import {AccountUpdateComponent} from "./account/account-update/account-update.component";
 import {AccountFormComponent} from "./account/account-form/account-form.component";
+import {AccountCloseComponent} from "./account/account-close/account-close.component";
 
 
 export const routes: Routes = [
@@ -18,6 +19,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'updateUser/:id', component: UpdateUserFormComponent },
   { path: 'updateAccount/:id', component: AccountUpdateComponent },
+  { path: 'close/:id', component: AccountCloseComponent },
 
   { path: 'accounts', component: AccountListComponent },
   { path: 'login', component: LoginComponent },

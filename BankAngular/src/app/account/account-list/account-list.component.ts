@@ -47,4 +47,15 @@ export class AccountListComponent implements OnInit {
   }
 
 
+  closeAccount(idA: number): void {
+    const reason = prompt('Enter the reason for closing this account:');
+    if (reason) {
+      this.accountService.closeAccount(idA, { closureReason: reason }).subscribe(
+        () => {
+          console.log('Account closed successfully');
+        },
+        error => console.error('Error closing account:', error)
+      );
+    }
+  }
 }

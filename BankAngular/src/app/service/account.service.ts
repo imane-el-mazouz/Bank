@@ -45,8 +45,19 @@ export class AccountService {
       .pipe(catchError(this.handleError));
   }
 
+  // closeAccount(id: number, account: Account): Observable<Account> {
+  //   return this.http.put<Account>(`${this.apiUrl}/close/${id}`, account, { headers: this.getHeaders() })
+  //     .pipe(catchError(this.handleError));
+  // }
+
+  closeAccount(id: number, accountCloseData: { closureReason: string }): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/close/${id}`, accountCloseData, { headers: this.getHeaders() })
+      .pipe(catchError(this.handleError));
+  }
   private handleError(error: any): Observable<never> {
     console.error('An error occurred', error);
     return throwError(() => new Error('Something went wrong, please try again later.'));
   }
+
+
 }

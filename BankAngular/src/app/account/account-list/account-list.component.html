@@ -31,6 +31,8 @@
               <td>
                 <a class="btn btn-primary" [routerLink]="['/updateAccount', account.idA]">Update Account</a>
                 <button class="btn btn-danger" (click)="deleteAccount(account.idA)">Delete</button>
+                <button class="btn btn-danger" (click)="closeAccount(account.idA)">Close</button>
+
               </td>
             </tr>
             </tbody>
