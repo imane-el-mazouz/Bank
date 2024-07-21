@@ -1,1 +1,18 @@
-<p>card-update works!</p>
+<div class="card-update-container">
+  <h2>Update Card</h2>
+  <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="typeCard">Card Type</label>
+      <select id="typeCard" formControlName="typeCard">
+        <option *ngFor="let entry of typeCEntries" [value]="entry.value">{{ entry.key }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select id="status" formControlName="status">
+        <option *ngFor="let entry of statusEntries" [value]="entry.value">{{ entry.key }}</option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="cardForm.invalid">Update Card</button>
+  </form>
+</div>

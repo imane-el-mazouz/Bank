@@ -14,9 +14,9 @@ import {BeneficiaryListComponent} from "./beneficiary/beneficiary-list/beneficia
 import {BeneficiaryUpdateComponent} from "./beneficiary/beneficiary-update/beneficiary-update.component";
 import {CardListComponent} from "./card/card-list/card-list.component";
 import {CardAddComponent} from "./card/card-form/card-form.component";
-
-
-
+import {CardUpdateComponent} from "./card/card-update/card-update.component";
+import { TransactionListComponent} from "./transaction/transaction-list/transaction-list.component";
+import { TransactionFormComponent} from "./transaction/transaction-form/transaction-form.component";
 
 export const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -40,10 +40,12 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path : 'signup' , component: SignupComponent},
 
-
+  { path: 'transactions', component: TransactionListComponent },
+  { path: 'createTransaction', component: TransactionFormComponent },
 
   { path: 'cards', component: CardListComponent },
   { path: 'addcard', component: CardAddComponent },
+  { path: 'updatecard/:id', component: CardUpdateComponent }  ,// This handles the dynamic 'id' parameter
 
 
   { path: '', redirectTo: '/home', pathMatch: 'full' }

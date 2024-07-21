@@ -6,6 +6,8 @@ import { RouterModule, RouterOutlet, RouterLink } from '@angular/router';
 import { NgForOf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {User} from "../../model/user";
+import {FooterComponent} from "../../components/footer/footer.component";
+import {NavbarComponent} from "../../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-account-list',
@@ -18,7 +20,9 @@ import {User} from "../../model/user";
     RouterModule,
     RouterOutlet,
     RouterLink,
-    NgForOf
+    NgForOf,
+    FooterComponent,
+    NavbarComponent
   ]
 })
 export class AccountListComponent implements OnInit {

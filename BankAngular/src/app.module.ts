@@ -14,6 +14,12 @@ import {AuthInterceptorService} from "./app/service/auth-interceptor-service.ser
 import {BeneficiaryListComponent} from "./app/beneficiary/beneficiary-list/beneficiary-list.component";
 import {BeneficiaryFormComponent} from "./app/beneficiary/beneficiary-form/beneficiary-form.component";
 import {BeneficiaryUpdateComponent} from "./app/beneficiary/beneficiary-update/beneficiary-update.component";
+import {CardListComponent} from "./app/card/card-list/card-list.component";
+import {CardAddComponent} from "./app/card/card-form/card-form.component";
+import {CardUpdateComponent} from "./app/card/card-update/card-update.component";
+import {TransactionUpdateComponent} from "./app/transaction/transaction-update/transaction-update.component";
+import {TransactionFormComponent} from "./app/transaction/transaction-form/transaction-form.component";
+import {TransactionListComponent} from "./app/transaction/transaction-list/transaction-list.component";
 
 
 @NgModule({
@@ -33,13 +39,20 @@ import {BeneficiaryUpdateComponent} from "./app/beneficiary/beneficiary-update/b
     FooterComponent,
     BeneficiaryListComponent,
     BeneficiaryFormComponent,
-    BeneficiaryUpdateComponent
+    BeneficiaryUpdateComponent,
+    TransactionListComponent,
+    TransactionFormComponent,
+    TransactionUpdateComponent,
+    CardListComponent,
+    CardAddComponent,
+    CardUpdateComponent
   ],
   providers: [
     UserService,
     {
-      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true
-    }
+    provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true
+
+}
   ],
   bootstrap: []
 })

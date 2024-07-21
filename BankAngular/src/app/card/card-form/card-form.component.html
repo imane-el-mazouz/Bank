@@ -13,16 +13,7 @@
         <option *ngFor="let entry of statusEntries" [value]="entry.value">{{ entry.key }}</option>
       </select>
     </div>
-    <div class="form-group">
-      <label for="blockingReason">Blocking Reason</label>
-      <select id="blockingReason" formControlName="blockingReason">
-        <option *ngFor="let entry of reasonEntries" [value]="entry.value">{{ entry.key }}</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="accountId">Account ID</label>
-      <input id="accountId" type="number" formControlName="accountId">
-    </div>
+
     <button type="submit" [disabled]="cardForm.invalid">Add Card</button>
   </form>
 </div>

@@ -1,45 +1,70 @@
-<header id="header" class="header sticky-top" xmlns:th="http://www.w3.org/1999/xhtml">
-  <div class="branding d-flex align-items-center">
-    <div class="container position-relative d-flex align-items-center justify-content-between">
-      <a routerLink="" class="logo d-flex align-items-center me-auto">
-        <h1 class="sitename">Medilab</h1>
-      </a>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a routerLink="" class="active">Home</a></li>
-          <li><a routerLink="#about">About</a></li>
-          <li><a routerLink="#services">Services</a></li>
-          <li class="dropdown">
-            <a href="#">
-              <span>Activities</span>
-              <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li class="dropdown">
-                <a href="#"><span>Glycemia</span> <i
-                  class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a routerLink="/addGlycemie">Add Glycemia</a></li>
-                  <li><a routerLink="/glycemies">Your Glycemies</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#"><span>User</span> <i
-                  class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a routerLink="/users">Our users</a></li>
-                  <li><a routerLink="/adduser">Add User</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a th:href="@{/#contact}">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-      <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="Profile Icon" class="profile-icon"
-           id="profileIcon"
-           style="position: fixed; top: 20px; right: 20px; height: 50px; width: 50px; border: 3px solid var(--nav-hover-color); border-radius: 50%; cursor: pointer; box-shadow: 0 0 10px rgba(25, 119, 204, 0.5);">
+<header id="header" class="header d-flex align-items-center fixed-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-    </div>
+    <a routerLink="/home" class="logo d-flex align-items-center me-auto me-lg-0">
+      <h1 class="sitename">GP</h1>
+      <span>.</span>
+    </a>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <!-- Other Links -->
+
+        <li class="dropdown">
+          <a href="#"><span>Sections</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a [routerLink]="['/home']" fragment="about" routerLinkActive="active">About</a></li>
+            <li><a [routerLink]="['/home']" fragment="services" routerLinkActive="active">Services</a></li>
+            <li><a [routerLink]="['/home']" fragment="portfolio" routerLinkActive="active">Portfolio</a></li>
+            <li><a [routerLink]="['/home']" fragment="team" routerLinkActive="active">Team</a></li>
+            <li><a [routerLink]="['/home']" fragment="contact" routerLinkActive="active">Contact</a></li>
+          </ul>
+        </li>
+
+        <!-- Other Dropdowns -->
+        <li class="dropdown">
+          <a href="#"><span>Beneficiaries</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a routerLink="/beneficiaries" routerLinkActive="active">List Beneficiaries</a></li>
+            <li><a routerLink="/benef" routerLinkActive="active">Add Beneficiary</a></li>
+            <li><a routerLink="/updatebenef/:id" routerLinkActive="active">Update Beneficiary</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#"><span>Cards</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a routerLink="/cards" routerLinkActive="active">List Cards</a></li>
+            <li><a routerLink="/addcard" routerLinkActive="active">Add Card</a></li>
+            <li><a routerLink="/updatecard/:id" routerLinkActive="active">Update Card</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#"><span>Accounts</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a routerLink="/accounts" routerLinkActive="active">List Accounts</a></li>
+            <li><a routerLink="/addAccount" routerLinkActive="active">Add Account</a></li>
+            <li><a routerLink="/updateAccount/:id" routerLinkActive="active">Update Account</a></li>
+            <li><a routerLink="/close/:id" routerLinkActive="active">Close Account</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#"><span>Transactions</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a routerLink="/transactions" routerLinkActive="active">List Transactions</a></li>
+            <li><a routerLink="/createTransaction" routerLinkActive="active">Add Transaction</a></li>
+          </ul>
+        </li>
+
+        <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+        <li><a routerLink="/signup" routerLinkActive="active">Sign Up</a></li>
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+
+    <a class="btn-getstarted" routerLink="/about">Get Started</a>
+
   </div>
 </header>

@@ -31,17 +31,22 @@ public class CardService {
         cardRepository.deleteById(id);
     }
 
-    public Card updateCard(Long id, Card updatedCard) {
-        Card existingCard = cardRepository.findById(id)
-                .orElseThrow(CardNotFoundException::new);
-
-        existingCard.setExpirationDate(updatedCard.getExpirationDate());
-        existingCard.setTypeCard(updatedCard.getTypeCard());
-        existingCard.setStatus(updatedCard.getStatus());
-        existingCard.setBlockingReason(updatedCard.getBlockingReason());
-        existingCard.setAccount(updatedCard.getAccount());
-
-        cardRepository.save(existingCard);
-        return existingCard;
-    }
+//    public Card updateCard(Long id, Card updatedCard) {
+//        Card existingCard = cardRepository.findById(id)
+//                .orElseThrow(CardNotFoundException::new);
+//        existingCard.setExpirationDate(updatedCard.getExpirationDate());
+//        existingCard.setTypeCard(updatedCard.getTypeCard());
+//        existingCard.setStatus(updatedCard.getStatus());
+//        existingCard.setBlockingReason(updatedCard.getBlockingReason());
+//        existingCard.setAccount(updatedCard.getAccount());
+//
+//        cardRepository.save(existingCard);
+//        return existingCard;
+//    }
+public void updateCard(Long id, Card updatedCard) {
+  Card existingCard = getCardById(id);
+  existingCard.setStatus(updatedCard.getStatus());
+  existingCard.setBlockingReason(updatedCard.getBlockingReason());
+  cardRepository.save(existingCard);
+}
 }

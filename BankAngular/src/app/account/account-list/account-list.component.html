@@ -1,6 +1,7 @@
+<app-navbar></app-navbar>
+
 <main class="main">
   <div *ngIf="accounts.length > 0; else noAccounts">
-    <h2>Your Accounts</h2>
     <div class="container">
       <div class="card my-5">
         <div class="card-body">
@@ -32,7 +33,6 @@
                 <a class="btn btn-primary" [routerLink]="['/updateAccount', account.idA]">Update Account</a>
                 <button class="btn btn-danger" (click)="deleteAccount(account.idA)">Delete</button>
                 <button class="btn btn-danger" (click)="closeAccount(account.idA)">Close</button>
-
               </td>
             </tr>
             </tbody>
@@ -45,3 +45,4 @@
     <p>No accounts found.</p>
   </ng-template>
 </main>
+

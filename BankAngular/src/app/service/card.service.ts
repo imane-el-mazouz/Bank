@@ -48,7 +48,15 @@ export class CardService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
   }
-
+  updateCardStatus(id: number, updatedCard: { status: string, blockingReason?: string }): Observable<void> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<void>(`${this.apiUrl}/${id}/status`, updatedCard, { headers })
+      .pipe(catchError(this.handleError));
+  }
   private handleError(error: any): Observable<never> {
     console.error('An error occurred', error);
     return throwError(() => new Error('Something went wrong, please try again later.'));
