@@ -1,6 +1,5 @@
 export enum Reason {
-  loss,
-    theft,
-    none,
-
+  Loss = 'Loss',
+  Theft = 'Theft',
+  None = 'None',
 }

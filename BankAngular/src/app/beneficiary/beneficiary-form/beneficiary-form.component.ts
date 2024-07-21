@@ -12,7 +12,7 @@ import { BeneficiaryService } from '../../service/beneficiary.service';
   imports: [
     NgForOf,
     ReactiveFormsModule,
-    ReactiveFormsModule
+
   ],
   templateUrl: './beneficiary-form.component.html',
   styleUrls: ['./beneficiary-form.component.scss']
@@ -48,6 +48,7 @@ export class BeneficiaryFormComponent implements OnInit {
         },
         error: (error) => {
           console.error('There was an error saving the beneficiary', error);
+
         }
       });
     }

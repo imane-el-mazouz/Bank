@@ -1,1 +1,28 @@
-<p>card-form works!</p>
+<div class="card-add-container">
+  <h2>Add New Card</h2>
+  <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="typeCard">Card Type</label>
+      <select id="typeCard" formControlName="typeCard">
+        <option *ngFor="let entry of typeCEntries" [value]="entry.value">{{ entry.key }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select id="status" formControlName="status">
+        <option *ngFor="let entry of statusEntries" [value]="entry.value">{{ entry.key }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="blockingReason">Blocking Reason</label>
+      <select id="blockingReason" formControlName="blockingReason">
+        <option *ngFor="let entry of reasonEntries" [value]="entry.value">{{ entry.key }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="accountId">Account ID</label>
+      <input id="accountId" type="number" formControlName="accountId">
+    </div>
+    <button type="submit" [disabled]="cardForm.invalid">Add Card</button>
+  </form>
+</div>

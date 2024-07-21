@@ -1,1 +1,30 @@
-<p>card-list works!</p>
+<div class="card-list">
+  <h2>Card List</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Expiration Date</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Blocking Reason</th>
+      <th>Account ID</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let card of cards">
+      <td>{{ card.idC }}</td>
+      <td>{{ card.expirationDate | date }}</td>
+      <td>{{ card.typeCard }}</td>
+      <td>{{ card.status }}</td>
+<!--      <td>{{ card.blockingReason }}</td>-->
+      <td>{{ card.accountId }}</td>
+      <td>
+        <button (click)="updateCard(card.idC)">Update</button>
+        <button (click)="deleteCard(card.idC)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

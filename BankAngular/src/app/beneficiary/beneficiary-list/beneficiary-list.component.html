@@ -1,11 +1,26 @@
 <div class="beneficiary-list">
   <h2>Beneficiaries</h2>
-  <ul>
-    <li *ngFor="let beneficiary of beneficiaries">
-      <span>{{ beneficiary.name }}</span>
-      <span>{{ beneficiary.rib }}</span>
-      <span>{{ beneficiary.bank }}</span>
-      <span>{{ beneficiary.sold }}</span>
-    </li>
-  </ul>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>RIB</th>
+      <th>Bank</th>
+      <th>Balance</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let beneficiary of beneficiaries">
+      <td>{{ beneficiary.name }}</td>
+      <td>{{ beneficiary.rib }}</td>
+      <td>{{ beneficiary.bank }}</td>
+      <td>{{ beneficiary.sold }}</td>
+      <td>
+        <button (click)="updateBeneficiary(beneficiary.idB)">Update</button>
+        <button (click)="deleteBeneficiary(beneficiary.idB)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>

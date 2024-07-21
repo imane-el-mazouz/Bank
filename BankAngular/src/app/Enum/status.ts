@@ -1,7 +1,5 @@
 export enum Status {
-  ctivated,
-    desactivated,
-    bloqued
-
+  Activated = 'Activated',
+  Deactivated = 'Deactivated',
+  Blocked = 'Blocked',
 }
-

@@ -12,23 +12,39 @@ import {AccountCloseComponent} from "./account/account-close/account-close.compo
 import {BeneficiaryFormComponent} from "./beneficiary/beneficiary-form/beneficiary-form.component";
 import {BeneficiaryListComponent} from "./beneficiary/beneficiary-list/beneficiary-list.component";
 import {BeneficiaryUpdateComponent} from "./beneficiary/beneficiary-update/beneficiary-update.component";
+import {CardListComponent} from "./card/card-list/card-list.component";
+import {CardAddComponent} from "./card/card-form/card-form.component";
+
+
 
 
 export const routes: Routes = [
   { path: 'users', component: UserListComponent },
-  { path: 'beneficiaries', component: BeneficiaryListComponent },
   { path: 'addUser', component: UserFormComponent },
   { path: 'addAccount', component: AccountFormComponent },
-  { path: 'addBenef', component: BeneficiaryFormComponent },
+
 
   { path: 'home', component: HomeComponent },
   { path: 'updateUser/:id', component: UpdateUserFormComponent },
   { path: 'updateAccount/:id', component: AccountUpdateComponent },
   { path: 'close/:id', component: AccountCloseComponent },
+
+
+
+  { path: 'beneficiaries', component: BeneficiaryListComponent },
+  { path: 'benef', component: BeneficiaryFormComponent },
   { path: 'updatebenef/:id', component: BeneficiaryUpdateComponent },
+
 
   { path: 'accounts', component: AccountListComponent },
   { path: 'login', component: LoginComponent },
   { path : 'signup' , component: SignupComponent},
+
+
+
+  { path: 'cards', component: CardListComponent },
+  { path: 'addcard', component: CardAddComponent },
+
+
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
