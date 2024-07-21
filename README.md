@@ -1,27 +1,54 @@
-# Bank
+# E-Bank Solution
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+## Contexte du Projet
 
-## Development server
+La digitalisation des services bancaires est devenue incontournable pour offrir aux clients une expérience fluide et accessible. Cette application e-bank vise à fournir une plateforme sécurisée et intuitive permettant aux utilisateurs de gérer leurs comptes bancaires et d'effectuer des opérations financières en ligne.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Technologies Utilisées
 
-## Code scaffolding
+- **Frontend :** Angular 2+, TypeScript, SCSS, Bootstrap/Tailwind CSS
+- **Backend :** Spring Boot, Java, MySQL, Spring Security (JWT), Docker
+- **Outils de Build :** Maven (pour le backend), Angular CLI (pour le frontend)
+- **Documentation API :** Springfox (Swagger), Postman
+- **Tests :** JUnit (backend), Angular Testing Framework (frontend)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Objectifs
 
-## Build
+### Partie Frontend (Angular)
+- Développer des interfaces utilisateur réactives pour l'application e-bank.
+- Consommer les APIs via Angular pour créer une application monopage fonctionnelle et responsive.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Partie Backend (Spring Boot)
+- Créer une API REST sécurisée pour gérer les comptes bancaires, les cartes, les transferts d'argent, et les bénéficiaires.
+- Assurer l'authentification et l'autorisation des utilisateurs à l'aide de Spring Security et JWT.
+- Containeriser l'application avec Docker pour faciliter le déploiement.
 
-## Running unit tests
+## Fonctionnalités Principales
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Frontend
+- **Interface Utilisateur :** Création de formulaires pour la gestion des comptes, cartes, et bénéficiaires.
+- **Responsive Design :** Assurer que l'application est utilisable sur tous les appareils (ordinateurs, tablettes, téléphones).
+- **Interactions Dynamiques :** Utilisation d'Angular pour des interactions dynamiques et des mises à jour en temps réel des données.
 
-## Running end-to-end tests
+### Backend
+- **Gestion des Comptes :** Création, consultation des soldes, historiques de transactions, et fermeture de comptes.
+- **Gestion des Cartes Bancaires :** Consultation, activation, désactivation, et blocage des cartes.
+- **Transferts d'Argent :** Transferts internes et externes, gestion des bénéficiaires.
+- **Sécurité :** Authentification avec Spring Security, gestion des JWT pour les sessions utilisateur.
+- **Déploiement Docker :** Utilisation de Docker pour containeriser l'application backend.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Instructions d'Installation et d'Exécution
 
-## Further help
+### Prérequis
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- JDK 17 ou supérieur
+- Maven
+- Docker (pour le déploiement containerisé)
+- Node.js et npm (pour le frontend)
+
+### Installation Backend
+
+1. **Cloner le repository :**
+   ```bash
+   git clone https://github.com/your-username/e-bank-solution-backend.git
+   cd e-bank-solution-backend
