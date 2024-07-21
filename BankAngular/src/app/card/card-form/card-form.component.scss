@@ -1,12 +1,71 @@
-button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+/* Container styling */
+.card-add-container {
+  max-width: 600px; /* Limite la largeur du formulaire pour une meilleure lisibilité */
+  margin: 0 auto; /* Centre le formulaire horizontalement */
+  padding: 20px; /* Ajoute du padding pour l'espacement intérieur */
+  background-color: #fff; /* Fond blanc pour le formulaire */
+  border-radius: 8px; /* Coins arrondis pour un look moderne */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre portée pour un effet de profondeur */
 }
 
+.card-add-container h2 {
+  margin-bottom: 20px; /* Espace sous le titre */
+  color: #333; /* Couleur sombre pour le titre */
+  font-size: 24px; /* Taille du texte du titre */
+  text-align: center; /* Centre le titre */
+}
 
+/* Form styling */
+.card-add-container .form-group {
+  margin-bottom: 15px; /* Espace entre les groupes de champs */
+}
+
+.card-add-container label {
+  display: block; /* Affiche les étiquettes comme des blocs */
+  margin-bottom: 5px; /* Espace sous les étiquettes */
+  font-weight: bold; /* Gras pour les étiquettes */
+  color: #495057; /* Couleur des étiquettes */
+}
+
+.card-add-container input,
+.card-add-container select {
+  width: calc(100% - 22px); /* Prend toute la largeur disponible */
+  padding: 10px; /* Espacement intérieur pour les champs */
+  font-size: 16px; /* Taille du texte des champs */
+  border: 1px solid #ced4da; /* Bordure légère pour les champs */
+  border-radius: 4px; /* Coins arrondis pour les champs */
+  background-color: #f8f9fa; /* Fond clair pour les champs */
+  transition: border-color 0.3s ease; /* Transition pour la couleur de bordure */
+}
+
+.card-add-container input:focus,
+.card-add-container select:focus {
+  border-color: #80bdff; /* Couleur de bordure au focus */
+  outline: none; /* Supprime le contour par défaut */
+  background-color: #fff; /* Fond blanc au focus */
+}
+
+/* Button styling */
+.card-add-container button {
+  width: 100%; /* Prend toute la largeur disponible */
+  padding: 10px 20px; /* Espacement intérieur du bouton */
+  background-color: #ffc107; /* Couleur de fond jaune pour le bouton */
+  color: #fff; /* Couleur du texte du bouton */
+  border: none; /* Enlève la bordure par défaut */
+  border-radius: 4px; /* Coins arrondis pour le bouton */
+  font-size: 16px; /* Taille de police du bouton */
+  font-weight: bold; /* Gras pour le texte du bouton */
+  cursor: pointer; /* Curseur de pointeur pour le bouton */
+  transition: background-color 0.3s ease; /* Transition pour les effets au survol */
+  margin-top: 10px; /* Espace au-dessus du bouton */
+}
+
+.card-add-container button:hover {
+  background-color: #e0a800; /* Couleur de fond jaune plus foncé au survol */
+}
+
+.card-add-container button:disabled {
+  background-color: #f8f9fa; /* Couleur de fond du bouton désactivé */
+  color: #6c757d; /* Couleur du texte du bouton désactivé */
+  cursor: not-allowed; /* Curseur de non autorisé pour le bouton désactivé */
+}

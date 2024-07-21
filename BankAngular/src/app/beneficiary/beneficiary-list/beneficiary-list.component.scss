@@ -1,49 +1,61 @@
+/* Container styling */
 .beneficiary-list {
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+  max-width: 800px; /* Limite la largeur de la liste pour une meilleure lisibilité */
+  margin: 0 auto; /* Centre la liste horizontalement */
+  padding: 20px; /* Ajoute du padding pour l'espacement intérieur */
+  background-color: #fff; /* Fond blanc pour la liste */
+  border-radius: 8px; /* Coins arrondis pour un look moderne */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre portée pour un effet de profondeur */
+}
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
+.beneficiary-list h2 {
+  margin-bottom: 20px; /* Espace sous le titre */
+  color: #333; /* Couleur sombre pour le titre */
+  font-size: 24px; /* Taille du texte du titre */
+  text-align: center; /* Centre le titre */
+}
 
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
+/* Table styling */
+.beneficiary-list table {
+  width: 100%; /* Largeur complète pour la table */
+  border-collapse: collapse; /* Fusionne les bordures pour un look plus propre */
+}
 
-    th {
-      background-color: #f2f2f2;
-      text-align: center;
-    }
+.beneficiary-list th, .beneficiary-list td {
+  text-align: center; /* Centre le texte dans les cellules */
+  padding: 12px; /* Espacement intérieur pour plus de confort */
+  border-bottom: 1px solid #ddd; /* Bordure discrète pour les lignes */
+}
 
-    td {
-      text-align: center;
+.beneficiary-list th {
+  background-color: #f8f9fa; /* Couleur de fond des en-têtes */
+  font-weight: bold; /* Gras pour les en-têtes */
+  color: #495057; /* Couleur du texte des en-têtes */
+}
 
-      button {
-        margin: 0 5px;
-        padding: 5px 10px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
+.beneficiary-list tbody tr:hover {
+  background-color: #f1f1f1; /* Couleur de survol des lignes */
+}
 
-        &:hover {
-          background-color: #0056b3;
-        }
+/* Button styling */
+.beneficiary-list button {
+  background-color: #ffc107; /* Couleur de fond jaune pour les boutons */
+  color: #fff; /* Couleur du texte des boutons */
+  border: none; /* Enlève la bordure par défaut */
+  padding: 10px 20px; /* Espacement intérieur des boutons */
+  border-radius: 4px; /* Coins arrondis pour les boutons */
+  font-size: 14px; /* Taille de police des boutons */
+  cursor: pointer; /* Curseur de pointeur pour les boutons */
+  transition: background-color 0.3s ease; /* Transition pour les effets au survol */
+  margin-right: 5px; /* Espace entre les boutons */
+}
 
-        &.delete {
-          background-color: #dc3545;
+.beneficiary-list button:hover {
+  background-color: #e0a800; /* Couleur de fond jaune plus foncé au survol */
+}
 
-          &:hover {
-            background-color: #c82333;
-          }
-        }
-      }
-    }
-  }
+.beneficiary-list button:disabled {
+  background-color: #f8f9fa; /* Couleur de fond du bouton désactivé */
+  color: #6c757d; /* Couleur du texte du bouton désactivé */
+  cursor: not-allowed; /* Curseur de non autorisé pour le bouton désactivé */
 }

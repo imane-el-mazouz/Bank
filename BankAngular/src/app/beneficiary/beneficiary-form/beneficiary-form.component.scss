@@ -1,78 +1,70 @@
-/* General reset for margin and padding */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
+/* Container styling */
 .account-form-container {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  max-width: 500px;
-  width: 100%;
+  max-width: 600px; /* Limite la largeur du formulaire pour une meilleure lisibilité */
+  margin: 0 auto; /* Centre le formulaire horizontalement */
+  padding: 20px; /* Ajoute du padding pour l'espacement intérieur */
+  background-color: #fff; /* Fond blanc pour le formulaire */
+  border-radius: 8px; /* Coins arrondis pour un look moderne */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre portée pour un effet de profondeur */
 }
 
 h2 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Espace sous le titre */
+  color: #333; /* Couleur sombre pour le titre */
+  font-size: 24px; /* Taille du texte du titre */
+  text-align: center; /* Centre le titre */
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 15px; /* Espace entre les champs de formulaire */
 }
 
-.form-group label {
-  display: block;
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 5px;
+label {
+  display: block; /* Affiche les labels comme des blocs pour une meilleure disposition */
+  margin-bottom: 5px; /* Espace sous le label */
+  font-weight: bold; /* Gras pour les labels */
+  color: #495057; /* Couleur sombre pour les labels */
 }
 
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
+select, input[type="number"], input[type="text"], input[type="datetime-local"] {
+  width: 100%; /* Largeur complète pour les champs de formulaire */
+  padding: 10px; /* Espacement intérieur pour les champs */
+  border: 1px solid #ced4da; /* Bordure légère pour les champs */
+  border-radius: 4px; /* Coins arrondis pour les champs */
+  font-size: 16px; /* Taille de police des champs */
+  box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
 }
 
-.form-group input:focus,
-.form-group select:focus {
-  border-color: #4a90e2;
-  outline: none;
-  box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+select:focus, input:focus {
+  border-color: #ffc107; /* Bordure jaune au focus pour les champs */
+  outline: none; /* Enlève l'outline par défaut */
 }
 
+/* Button styling */
 button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #4a90e2;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  background-color: #ffc107; /* Couleur de fond jaune pour le bouton */
+  color: #fff; /* Couleur du texte du bouton */
+  border: none; /* Enlève la bordure par défaut */
+  padding: 10px 20px; /* Espacement intérieur du bouton */
+  border-radius: 4px; /* Coins arrondis pour le bouton */
+  font-size: 16px; /* Taille de police du bouton */
+  cursor: pointer; /* Curseur de pointeur pour le bouton */
+  transition: background-color 0.3s ease; /* Transition pour les effets au survol */
+  align-self: center; /* Centre le bouton horizontalement */
 }
 
 button:hover {
-  background-color: #357abd;
+  background-color: #e0a800; /* Couleur de fond jaune plus foncé au survol */
 }
 
 button:disabled {
-  background-color: #b0bec5;
-  cursor: not-allowed;
+  background-color: #f8f9fa; /* Couleur de fond du bouton désactivé */
+  color: #6c757d; /* Couleur du texte du bouton désactivé */
+  cursor: not-allowed; /* Curseur de non autorisé pour le bouton désactivé */
 }

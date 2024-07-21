@@ -1,42 +1,57 @@
 .card-update-container {
-  width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  h2 {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
+.card-update-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+}
 
-  .form-group {
-    margin-bottom: 1rem;
+.card-update-container .form-group {
+  margin-bottom: 15px;
+}
 
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-    }
+.card-update-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
 
-    select {
-      width: 100%;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-  }
+.card-update-container input,
+.card-update-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
 
-  button {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
+.card-update-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffc107;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-    &:disabled {
-      background-color: #6c757d;
-      cursor: not-allowed;
-    }
-  }
+.card-update-container button[disabled] {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.card-update-container button:hover:not([disabled]) {
+  background-color: #e0a800;
 }
