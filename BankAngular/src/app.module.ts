@@ -11,10 +11,14 @@ import {RouterModule} from "@angular/router";
 import {routes} from "./app/app.routes";
 import {UserService} from "./app/service/user.service";
 import {AuthInterceptorService} from "./app/service/auth-interceptor-service.service";
+import {BeneficiaryListComponent} from "./app/beneficiary/beneficiary-list/beneficiary-list.component";
+import {BeneficiaryFormComponent} from "./app/beneficiary/beneficiary-form/beneficiary-form.component";
+import {BeneficiaryUpdateComponent} from "./app/beneficiary/beneficiary-update/beneficiary-update.component";
 
 
 @NgModule({
   declarations: [
+
 
   ],
   imports: [
@@ -26,13 +30,16 @@ import {AuthInterceptorService} from "./app/service/auth-interceptor-service.ser
     NavbarComponent,
     HomeComponent,
     UserListComponent,
-    FooterComponent
+    FooterComponent,
+    BeneficiaryListComponent,
+    BeneficiaryFormComponent,
+    BeneficiaryUpdateComponent
   ],
   providers: [
     UserService,
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true
-}
+    }
   ],
   bootstrap: []
 })

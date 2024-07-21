@@ -1,3 +1,33 @@
+// import { Injectable } from '@angular/core';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { Observable, throwError } from 'rxjs';
+// import { catchError } from 'rxjs/operators';
+// import { Beneficiary } from '../model/beneficiary';
+//
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class BeneficiaryService {
+//   private apiUrl = 'http://localhost:8081/api/benef';
+//
+//   constructor(private http: HttpClient) {}
+//
+//   private getHeaders(): HttpHeaders {
+//     const token = localStorage.getItem('token');
+//     return new HttpHeaders({
+//       'Content-Type': 'application/json',
+//       'Authorization': `Bearer ${token}`
+//     });
+//   }
+//
+//   saveBenef(beneficiary: Beneficiary): Observable<Beneficiary> {
+//     return this.http.post<Beneficiary>(`${this.apiUrl}`, beneficiary, { headers: this.getHeaders() })
+//       .pipe(catchError(this.handleError));
+//   }
+//  getBeneficiaries(): Observable<Beneficiary[]> {
+//     return this.http.get<Beneficiary[]>(`${this.apiUrl}/beneficiaries`, { headers: this.getHeaders() })
+//      .pipe(catchError(this.handleError));
+//   }
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -21,13 +51,20 @@ export class BeneficiaryService {
   }
 
   saveBenef(beneficiary: Beneficiary): Observable<Beneficiary> {
-    return this.http.post<Beneficiary>(`${this.apiUrl}`, beneficiary, { headers: this.getHeaders() })
+    return this.http.post<Beneficiary>(this.apiUrl, beneficiary, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
   }
- getBeneficiaries(): Observable<Beneficiary[]> {
+
+  getBeneficiaries(): Observable<Beneficiary[]> {
     return this.http.get<Beneficiary[]>(`${this.apiUrl}/beneficiaries`, { headers: this.getHeaders() })
-     .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
+
+  private handleError(error: any): Observable<never> {
+    console.error('An error occurred', error);
+    return throwError(() => new Error('Something went wrong, please try again later.'));
+  }
+}
 
 
   // deleteAccount(id: number): Observable<void> {
@@ -55,8 +92,5 @@ export class BeneficiaryService {
   //     .pipe(catchError(this.handleError));
   // }
 
-  private handleError(error: any): Observable<never> {
-    console.error('An error occurred', error);
-    return throwError(() => new Error('Something went wrong, please try again later.'));
-  }
-}
+
+

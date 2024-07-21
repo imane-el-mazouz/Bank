@@ -1,1 +1,11 @@
-<p>beneficiary-list works!</p>
+<div class="beneficiary-list">
+  <h2>Beneficiaries</h2>
+  <ul>
+    <li *ngFor="let beneficiary of beneficiaries">
+      <span>{{ beneficiary.name }}</span>
+      <span>{{ beneficiary.rib }}</span>
+      <span>{{ beneficiary.bank }}</span>
+      <span>{{ beneficiary.sold }}</span>
+    </li>
+  </ul>
+</div>
