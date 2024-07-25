@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/user-auth-service.service';
+import {User} from "../model/user";
 
 @Component({
   selector: 'app-signup',
@@ -32,13 +33,13 @@ export class SignupComponent {
   }
 
   signup(): void {
-    const { name, email, password, profession, phone } = this.signupForm.value;
+    const { name, email, password, profession } = this.signupForm.value;
+    let info : User = this.signupForm.value;
     this.http.post<{ accessToken: string, user: any }>('http://localhost:8081/api/auth/signup', {
       name,
       email,
       password,
       profession,
-      phone
     }).subscribe(
       response => {
         this.authService.setToken(response.accessToken);

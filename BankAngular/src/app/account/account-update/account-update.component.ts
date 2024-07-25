@@ -5,6 +5,7 @@ import { AccountService } from '../../service/account.service';
 import { TypeA } from '../../Enum/TypeA';
 import { Bank } from '../../Enum/bank';
 import {KeyValuePipe, NgForOf} from "@angular/common";
+import {NavbarComponent} from "../../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-account-update',
@@ -13,7 +14,8 @@ import {KeyValuePipe, NgForOf} from "@angular/common";
   imports: [
     KeyValuePipe,
     NgForOf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NavbarComponent
   ],
   styleUrls: ['./account-update.component.scss']
 })

@@ -42,7 +42,7 @@
               <th scope="col">RIB</th>
               <th scope="col">Date</th>
               <th scope="col">Account Closed</th>
-              <th scope="col">Closure Reason</th>
+<!--              <th scope="col">Closure Reason</th>-->
               <th scope="col">Bank</th>
               <th scope="col">Actions</th>
             </tr>
@@ -55,7 +55,7 @@
               <td>{{ account.rib }}</td>
               <td>{{ account.date | date }}</td>
               <td>{{ account.accountClosed }}</td>
-              <td>{{ account.closeureReason }}</td>
+<!--              <td>{{ account.closeureReason }}</td>-->
               <td>{{ account.bank }}</td>
               <td>
                 <a class="icon-btn" [routerLink]="['/updateAccount', account.idA]" title="Update Account">

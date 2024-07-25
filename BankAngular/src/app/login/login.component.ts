@@ -32,7 +32,7 @@ export class LoginComponent {
 
   login(): void {
     const { name, password } = this.loginForm.value;
-    this.http.post<{ accessToken: string, user: any }>('http://localhost:8081/api/auth/login', { name, password })  // Use 'name' instead of 'username'
+    this.http.post<{ accessToken: string, user: any }>('http://localhost:8081/api/auth/login', { name, password })
       .subscribe(
         response => {
           this.authService.setToken(response.accessToken);
