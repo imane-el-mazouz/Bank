@@ -1,54 +1,96 @@
-# E-Bank Solution
+# Hello-Events
+
 
 ## Contexte du Projet
 
-La digitalisation des services bancaires est devenue incontournable pour offrir aux clients une expérience fluide et accessible. Cette application e-bank vise à fournir une plateforme sécurisée et intuitive permettant aux utilisateurs de gérer leurs comptes bancaires et d'effectuer des opérations financières en ligne.
+En tant que développeur junior, vous devez concevoir et développer une application Web pour la réservation de billets pour des événements, conformément aux exigences du client.
 
-## Technologies Utilisées
 
-- **Frontend :** Angular 2+, TypeScript, SCSS, Bootstrap/Tailwind CSS
-- **Backend :** Spring Boot, Java, MySQL, Spring Security (JWT), Docker
-- **Outils de Build :** Maven (pour le backend), Angular CLI (pour le frontend)
-- **Documentation API :** Springfox (Swagger), Postman
-- **Tests :** JUnit (backend), Angular Testing Framework (frontend)
+## Exigences du Projet
 
-## Objectifs
+### Pour les Clients
 
-### Partie Frontend (Angular)
-- Développer des interfaces utilisateur réactives pour l'application e-bank.
-- Consommer les APIs via Angular pour créer une application monopage fonctionnelle et responsive.
+**Données de la Page d'Accueil :**
+- Récupérer les informations sur les événements à afficher sur la page d'accueil.
 
-### Partie Backend (Spring Boot)
-- Créer une API REST sécurisée pour gérer les comptes bancaires, les cartes, les transferts d'argent, et les bénéficiaires.
-- Assurer l'authentification et l'autorisation des utilisateurs à l'aide de Spring Security et JWT.
-- Containeriser l'application avec Docker pour faciliter le déploiement.
+**Inscription et Connexion :**
+- Gérer l'inscription des nouveaux utilisateurs (création de compte).
+- Gérer la connexion des utilisateurs existants (authentification).
+- Récupérer et mettre à jour les informations de profil utilisateur.
 
-## Fonctionnalités Principales
+**Recherche et Filtrage des Événements :**
+- Effectuer des recherches d'événements en fonction de divers critères (date, lieu, catégorie, etc.).
 
-### Frontend
-- **Interface Utilisateur :** Création de formulaires pour la gestion des comptes, cartes, et bénéficiaires.
-- **Responsive Design :** Assurer que l'application est utilisable sur tous les appareils (ordinateurs, tablettes, téléphones).
-- **Interactions Dynamiques :** Utilisation d'Angular pour des interactions dynamiques et des mises à jour en temps réel des données.
+**Réservation d'Événement :**
+- Effectuer l'achat d'un billet.
 
-### Backend
-- **Gestion des Comptes :** Création, consultation des soldes, historiques de transactions, et fermeture de comptes.
-- **Gestion des Cartes Bancaires :** Consultation, activation, désactivation, et blocage des cartes.
-- **Transferts d'Argent :** Transferts internes et externes, gestion des bénéficiaires.
-- **Sécurité :** Authentification avec Spring Security, gestion des JWT pour les sessions utilisateur.
-- **Déploiement Docker :** Utilisation de Docker pour containeriser l'application backend.
+**Information sur l'Équipe et les Valeurs :**
+- Récupérer les informations sur l'équipe et les valeurs à afficher sur la page "À Propos".
 
-## Instructions d'Installation et d'Exécution
+**Gestion des Contacts :**
+- Recevoir et stocker les demandes de contact envoyées via un formulaire de contact.
 
-### Prérequis
+### Pour les Administrateurs
 
-- JDK 17 ou supérieur
-- Maven
-- Docker (pour le déploiement containerisé)
-- Node.js et npm (pour le frontend)
+**Tableau de Bord :**
+- Récupérer les données sur les activités des clients et les événements (inscriptions, achats, etc.).
 
-### Installation Backend
+**Gestion des Comptes et des Événements :**
+- Gérer les comptes clients (affichage, suppression).
+- Gérer les événements (création, mise à jour, suppression, consultation des détails).
 
-1. **Cloner le repository :**
-   ```bash
-   git clone https://github.com/your-username/e-bank-solution-backend.git
-   cd e-bank-solution-backend
+**Traitement des Demandes de Contact :**
+- Recevoir, consulter et répondre aux demandes de contact envoyées via le formulaire.
+
+### Dockerisation de l'Application
+
+- Créer un fichier `Dockerfile` pour containeriser l'application Spring Boot.
+- Tester votre application (docker container) après le déploiement.
+## Documentation
+
+La documentation de l'API est disponible à l'adresse suivante : [Swagger UI](http://localhost:8080/swagger-ui/index.html#)
+
+## Tests des API
+
+Les tests des API sont effectués avec [Postman](https://www.postman.com/) et sont inclus dans le projet. Voici les étapes pour tester les API :
+
+1. **Importation de la Collection Postman :**
+   - Téléchargez le fichier de collection Postman depuis le répertoire `postman/`.
+   - Importez-le dans Postman via `File` > `Import`.
+
+2. **Exécution des Tests :**
+   - Ouvrez la collection importée dans Postman.
+   - Exécutez les requêtes pour tester les différents points de terminaison de l'API.
+   - Vérifiez les réponses pour vous assurer que l'API fonctionne comme prévu.
+
+3. **Vérification des Résultats :**
+   - Analysez les résultats des tests pour vérifier la conformité avec les spécifications.
+   - Corrigez les éventuelles erreurs ou incohérences trouvées.
+     
+## Tests Unitaires
+
+Les tests unitaires sont écrits en utilisant [JUnit](https://junit.org/junit4/) pour assurer la qualité et le bon fonctionnement des composants individuels de l'application. Voici comment exécuter les tests unitaires :
+
+1. **Configuration des Tests :**
+   - Assurez-vous que votre environnement de développement est configuré pour exécuter les tests JUnit. Vous pouvez utiliser un IDE comme IntelliJ IDEA ou Eclipse, ou bien exécuter les tests via la ligne de commande.
+
+2. **Exécution des Tests :**
+   - Pour exécuter les tests depuis la ligne de commande, utilisez la commande suivante :
+     ```bash
+     mvn test
+     ```
+   - Pour exécuter les tests depuis un IDE, recherchez et exécutez les configurations de test JUnit.
+
+3. **Analyse des Résultats :**
+   - Examinez les rapports de test pour identifier les échecs et les erreurs.
+   - Corrigez les bugs détectés par les tests unitaires et assurez-vous que les tests passent avant de finaliser les développements.
+
+
+## Technologies
+
+- Spring Boot
+- Spring MVC
+- Spring Security
+- Spring Data JPA
+- JUnit
+- MySQL/PostgreSQL
